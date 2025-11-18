@@ -10,27 +10,30 @@ function generateCalendar(year, month) {
   const monthStart = new Date(year, month, 1);
   const monthEnd = new Date(year, month + 1, 0);
   const totalDays = monthEnd.getDate();
-
-  // Example booked days — these will be locked
   const bookedDays = [3, 7, 12, 21];
+
+  // create a fragment
+  const fragment = document.createDocumentFragment();
 
   for (let day = 1; day <= totalDays; day++) {
     const dayDiv = document.createElement("div");
     dayDiv.classList.add("day");
     dayDiv.textContent = day;
 
-    // Mark booked days
     if (bookedDays.includes(day)) {
       dayDiv.classList.add("booked");
       dayDiv.title = "Fully booked";
     } else {
-      // Only clickable if not booked
       dayDiv.addEventListener("click", () => openBookingModal(day));
     }
 
-    calendar.appendChild(dayDiv);
+    fragment.appendChild(dayDiv);
   }
+
+  // append all at once
+  calendar.appendChild(fragment);
 }
+
 
 function openBookingModal(day) {
   const now = new Date();

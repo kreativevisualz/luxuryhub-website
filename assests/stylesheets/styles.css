@@ -90,9 +90,9 @@ hr {
 }
 
 .logo {
-  max-width: 450px;
-  height: auto;
-  width: auto;
+   width: 150px;       /* or whatever max size you want */
+  max-width: 40vw;    /* responsive: won't exceed 40% of viewport width */
+  height: auto;   
   padding: 2rem;
   padding-top: 0;
 }
@@ -582,3 +582,8 @@ color: var(--black);
 background: var(--cherub);
 }
 
+@media (max-width: 480px) {
+  .logo {
+    width: 120px;
+  }
+}
