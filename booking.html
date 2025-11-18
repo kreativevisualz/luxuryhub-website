@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Luxury Hub Lashes — Booking</title>
+
+  <link rel="stylesheet" href="assests/stylesheets/booking.css">
+  <link rel="stylesheet" href="assests/stylesheets/styles.css">
+  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
+  <link rel="icon" href="assests/images/favicons/luxuryhubfavicon.ico" sizes="any">
+</head>
+<body>
+
+<main>
+
+  <header id="site-header">
+    
+    <button id="burger-toggle">&#9776;</button>
+    <nav id="primary-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="booking.html">Booking</a>
+      <a href="gallery.html">Gallery</a>
+    </nav>
+   <div class="logo-container">
+    <img src="assests/images/LuxuryHubLogo.svg" alt="luxuryhub logo" class="logo">
+  </div>
+  </header>
+
+  <hr/>
+
+  <!-- ===== MAIN CONTENT ===== -->
+
+<section class="availability">
+      <h2>Now Serving In</h2>
+      <p id="current-location" class="locations">Klerksdorp</p>
+      <!-- Later: Will update via Notion or Admin JS -->
+    </section>
+
+    <!-- SECTION: Calendar -->
+    <section class="calendar">
+      <h3>Select Your Date</h3>
+      <div id="calendar"></div>
+      <!-- Later: JS will handle date selection + open modal -->
+    </section>
+
+    <!-- === BOOKING MODAL (HIDDEN INITIALLY) === -->
+    <div id="bookingModal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h3>Book Your Appointment</h3>
+
+        <form id="bookingForm">
+          <label for="selectedDate">Date:</label>
+          <input type="text" id="selectedDate" readonly />
+
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" required />
+
+          <label for="service">Service:</label>
+          <select id="service" required>
+            <option>Select Service</option>
+            <option>Classic Set</option>
+            <option>Hybrid Set</option>
+            <option>Volume Set</option>
+            <option>Fluffy Set</option>
+          </select>
+
+          <label for="time">Preferred Time:</label>
+          <input type="time" id="time" required />
+
+          <label for="location">Location:</label>
+          <select id="location" required>
+            <option>Select Location</option>
+            <option>Klerksdorp</option>
+            <option>Potchefstroom</option>
+          </select>
+
+          <button type="submit" class="submit-btn">Confirm Booking</button>
+        </form>
+      </div>
+    </div>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section id="contact">
+    <h3>Need Help?</h3>
+    <p>Reach out to confirm your booking directly.</p>
+    <a href="https://wa.me/27788829368" class="whatsapp">WhatsApp: +27 78 882 9368</a>
+    <a href="mailto:lebsmoloi101@gmail.com" class="email">Email: lebsmoloi101@gmail.com</a>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <p>© <span id="year"></span> Luxury Hub Lashes | Website by <strong>Kreative Visualz</strong></p>
+  </footer>
+
+  <script defer src="assests/scripts/booking.js"></script>
+  <script defer src="assests/scripts/script.js"></script>
+
+</body>
+</html>
+</main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

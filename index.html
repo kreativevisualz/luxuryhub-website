@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Luxury Hub Lashes — Home</title>
+
+  <link rel="stylesheet" href="assests/stylesheets/styles.css">
+  <script defer src="assests/scripts/script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="assests/images/favicons/luxuryhubfavicon.ico" sizes="any">
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<main>
+
+  <header id="site-header">
+    
+    <button id="burger-toggle">&#9776;</button>
+    <nav id="primary-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="booking.html">Booking</a>
+      <a href="gallery.html">Gallery</a>
+    </nav>
+    <div class="logo-container">
+    <img src="assests/images/LuxuryHubLogo.svg" alt="luxuryhub logo" class="logo">
+  </div>
+  </header>
+
+  <hr/>
+
+  
+    <section id="home" class="hero">
+      <h2>Luxury is a ritual of self-love</h2>
+      <p>Luxury Hub Lashes — premium lash services designed to make you feel confident, camera-ready, and unapologetically you.</p>
+      <p id="hero2">Short appointments, long-lasting confidence — treatments tailored for students, busy women, and beauty lovers who want luxe without the fuss.</p>
+      <p id="hero3">Founded by a young entrepreneur who understands the hustle and the hustle deserves a little luxury.</p>
+      <a href="#services" class="btn">Our Services</a>
+    </section>
+    
+    <p id="AboutButton">Click to find out more us >>></p>
+
+    <section class="about">
+
+      <h2>About Luxury Hub</h2>
+
+      <p>At Luxury Hub, beauty is more than a look — it’s an experience.
+         We believe every woman deserves to feel effortlessly confident, elegant, and seen. What began as a passion for luxury lash artistry has evolved into a modern beauty destination — where self-care meets sophistication.</p>
+      
+      <br/>
+
+      <p>Founded by Lebo Moloi, a visionary who understands the balance between student life, hustle, and the need to feel your best, Luxury Hub brings premium-quality services to everyday women who crave that polished, “put-together” glow.</p>
+
+        <br/>
+
+      <p>With a touch of elegance in every detail, we combine professional artistry, quality products, and a client-first experience that leaves you feeling as good as you look. Whether it’s a fresh lash set, a hair install, or that final beauty touch before your big day — Luxury Hub is where confidence meets luxury.</p>
+
+    </section>
+
+    <section id="services" class="services-booking">
+      <h2>Services</h2>
+
+   <div class="scroll-container">
+    <button class="scroll-btn left" aria-label="Scroll left">‹</button>
+
+    <div class="services-wrapper">
+      <div class="service-card">
+        <h2>Classic Set</h2>
+        <p>A timeless, natural look that adds subtle length and fullness — perfect for everyday elegance.</p>
+        <p>R110 - 30-45min</p>
+        <a href="booking.html" class="btn">Book Now</a>
+      </div>
+      <div class="service-card">
+        <h2>Hybrid Set</h2>
+        <p>The best of both worlds — a balanced blend of classic and volume lashes for a soft, textured finish.</p>
+        <p>R130 - 30-45min</p>
+        <a href="booking.html" class="btn">Book Now</a>
+      </div>
+      <div class="service-card">
+        <h2>Volume Set</h2>
+        <p>Full, dramatic, and unapologetically bold — ideal for clients who love a luxe, standout look.</p>
+        <p>R150 - 30-45min</p>
+        <a href="booking.html" class="btn">Book Now</a>
+      </div>
+      <div class="service-card">
+        <h2>Fluffy Set</h2>
+        <p>Light, wispy, and ultra-feminine — gives that airy, effortless “baddie” finish that still feels soft.</p>
+        <p>R170 - 30-45min</p>
+        <a href="booking.html" class="btn">Book Now</a>
+      </div>
+      <!-- add more as needed -->
+    </div>
+
+    <button class="scroll-btn right" aria-label="Scroll right">›</button>
+  </div>
+
+      <div id="booking">
+        <h2>How to Book</h2>
+        <ol>
+          <li>Choose your preferred look from our Services.</li>
+          <li>Check available dates on the booking page.</li>
+          <li>Send a WhatsApp message or use the booking page to request your slot.</li>
+        </ol>
+        <p>We confirm bookings by WhatsApp. For same-day appointments, WhatsApp is fastest.</p>
+        <div id="buttoncont">
+        <a href="booking.html" class="btn">Go to Booking Page</a>
+        <a href="https://wa.me/27788829368?text=Hi%20Lebo%20I%20would%20like%20to%20make%20for%20the%20*InsertDateHere*%20are%20you%20available?%20" class="btn" target="_blank">Book via WhatsApp</a>
+        </div>
+        <a href="gallery.html" class="btn">See Gallery & Testimonials</button>
+      </div>
+    </section>
+
+
+  <footer>
+
+    <section id="contact">
+      <a href="https://wa.me/27788829368">WhatsApp: +27 78 882 9368</a>
+      <a href="mailto:lebsmoloi101@gmail.com">Email: lebsmoloi101@gmail.com</a>
+    </section>
+    <p>© <span id="year"></span> Luxury Hub Lashes | Website by <strong>Kreative Visualz</strong></p>
+  </footer>
+
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

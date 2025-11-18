@@ -1,0 +1,584 @@
+:root {
+/* === Colours === */
+--cherub: #fbe4e7;
+--mauvelous: #f08ead;
+--sweet-corn: #fbe983;
+--grain-brown: #e4c9b4;
+--matrix: #a75b52;
+--white: #ffffff;
+--black: #000000;
+ --gold: #d4af37; /* warm metallic gold */
+--text-dark: #111;
+--text-light: #fff;
+
+/* === Spacing === */
+--space-xxs: 0.25rem;
+--space-xs: 0.5rem;
+--space-sm: 1rem;
+--space-md: 1.5rem;
+--space-lg: 2rem;
+--space-xl: 3rem;
+
+/* === Typography === */
+--font-main: 'Poppins', sans-serif;
+--font-bold: 700;
+--font-regular: 400;
+--font-size-base: 1rem;
+--font-size-lg: 1.5rem;
+--font-size-xl: 2rem;
+
+/* === Layout === */
+--max-width: 1200px;
+--border-radius: 8px;
+}
+
+/* === Global Reset === */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden; /* hides any accidental side scroll */
+}
+
+html, body {
+width: 100%;
+height: 100%;
+font-size: 16px;
+}
+
+body {
+  background-color: #000;
+}
+
+/* === Header === */
+header {}
+
+header h1 {
+    font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+
+  /* Metallic gold effect using gradient */
+  background: linear-gradient(90deg, #c9a54a, #fceabb, #b8860b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  margin-bottom: 0.4rem
+}
+
+hr {
+  width: 80%;
+  height: 2px;
+  margin: auto;
+  background-color: var(--black);
+}
+
+
+/* The logo image itself */
+.logo-container {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ margin-top: 0;
+}
+
+.logo {
+  max-width: 450px;
+  height: auto;
+  width: auto;
+  padding: 2rem;
+  padding-top: 0;
+}
+
+#burger-toggle {
+  background-color:rgba(255, 255, 255, 0);
+  color: var(--gold);
+  border: none;
+  font-size: 1.5rem;
+  padding: 1rem;
+  
+
+}
+
+#primary-nav {
+  display: none;
+  background: rgba();
+}
+
+header.open #primary-nav {
+  display: block;
+}
+
+#primary-nav a {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: var(--cherub);
+}
+
+main {
+  font-family: var(--font-main);
+  color: var(--gold);
+
+  /* Background image + dark semi-transparent overlay in one line */
+  background: 
+    linear-gradient(rgba(24, 24, 24, 0.685),rgba(24, 24, 24, 0.685)), /* dark overlay */
+    url('assests/images/Background-LashesCollage.jpg') center/cover no-repeat;
+  
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+
+
+.menu-toggle {}
+.nav-links {}
+
+/* === Hero Section === */
+.hero {
+  width: 80%;
+  text-align: center;
+  margin: auto;
+  padding: 2rem;
+}
+
+.hero h2 {
+ font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  color: var(--text-light);
+  text-align: center;
+  opacity: 0.9; font-size: 1.4rem;
+  font-weight: 600;
+  padding:1rem;
+
+}
+.hero p {
+  font-size: 1rem;
+  padding:0.5rem;
+}
+
+#hero2 {
+  font-size: 0.8rem;
+}
+
+#hero3 {
+  font-size: 0.75rem ;
+  font-style: italic;
+  margin-bottom: 2rem;
+  width: 100%;
+
+}
+.hero a {
+  width: fit-content;
+  margin: 3rem;
+  padding: 7px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--black);
+  background-color: var(--matrix);
+  border: var(--black) 1.2px solid;
+}
+
+.hero a:hover {
+  color: var(--cherub);
+  background-color: var(--black);
+  border: var(--matrix) 1.2px solid;
+}
+
+/* === About Section === */
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(-8px);
+  }
+}
+
+#AboutButton {
+  text-align: center;
+  margin-top:2.5rem;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--matrix);
+  display: block;
+  animation: bounce 2s infinite;
+}
+
+.about {
+  display: none;
+  margin: auto;
+  padding: 2rem;
+  width: 60%;
+  font-size: 0.9rem;
+}
+
+.about h2 {
+ font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-light);
+  text-align: center;
+  opacity: 0.9;
+}
+
+.about-open {
+  display: block;
+}
+
+.aboutbtn-open {
+  animation: none;
+}
+
+#about h2 {}
+#about p {}
+
+/* === Services Section === */
+#services {}
+#services h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 2rem;
+  color: var(--text-light);
+  text-align: center;
+  opacity: 0.9;
+  margin-bottom: 1.2rem;
+}
+
+.scroll-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.services-wrapper {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+   scroll-snap-type: x mandatory; /* enables snap behaviour */
+  gap: 1rem;
+  padding: 1rem;
+  scrollbar-width: none; /* hide scrollbar on Firefox */
+  width: 60%;
+  margin: auto;
+}
+.services-wrapper::-webkit-scrollbar {
+  display: none; /* hide scrollbar on Chrome/Safari */
+}
+
+.service-card {
+  flex: 0 0 100%; 
+   scroll-snap-align: center;
+  background: var(--black);
+  border-radius: 10px;
+  padding: 1rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  text-align: center;
+
+}
+
+/* arrow buttons */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--mauvelous);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.service-card .btn {
+  width: fit-content;
+  margin: 3rem;
+  padding: 7px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--black);
+  background-color: var(--matrix);
+  border: var(--black) 1.2px solid;
+
+}
+
+.service-card .btn:hover {
+   color: var(--cherub);
+  background-color: var(--black);
+  border: var(--matrix) 1.2px solid;
+}
+
+.service-card p {
+  padding: 1.5rem;
+}
+
+
+.scroll-btn.left { left: 0.3rem; }
+.scroll-btn.right { right: 0.3rem; }
+
+
+/* === Booking Section === */
+#booking {
+  display:flex;
+  width: 60%;
+  flex-direction: column;
+  margin: auto;
+}
+#booking h2 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-size: 2rem;
+
+  text-align: center;
+  letter-spacing: 0.3px;
+  opacity: 0.8;
+
+}
+
+#booking li {
+  margin-top: 0;
+  gap: 0.4rem;
+}
+
+#booking p {
+  font-size: 0.8rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+#buttoncont {
+  display:flex;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+#booking button {
+  background: linear-gradient(145deg, #ff8ecf, #ff3ba7); /* pink gradient base */
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px rgba(255, 59, 167, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Glossy top highlight */
+#booking button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover effect */
+#booking button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(255, 59, 167, 0.4);
+}
+
+/* Active/Pressed state */
+#booking button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(255, 59, 167, 0.4);
+}
+
+#booking a{
+  display: inline-block;              /* makes <a> act like a button */
+  padding: 0.5rem 1.25rem;            /* smaller, refined padding */
+  font-size: 0.9rem;                  /* elegant, not oversized */
+  font-weight: 500;                   /* medium weight feels modern */
+  color: #fff;                        /* white text for contrast */
+  background: linear-gradient(135deg, #ff66b2, #e64a8b); /* rich pink gradient */
+  border-radius: 30px;                /* soft rounded corners */
+  text-decoration: none;              /* remove underline */
+  position: relative;                 /* for the highlight overlay */
+  transition: all 0.25s ease;         /* smooth hover transition */
+  box-shadow: 0 3px 6px rgba(230, 74, 139, 0.25); /* subtle glow */
+}
+
+/* Add the soft glossy reflection */
+#booking a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+  background: rgba(255, 255, 255, 0.25); /* white shine */
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover: slightly brighter, lifted look */
+#booking a:hover {
+  background: linear-gradient(135deg, #ff7ac4, #f05fa3);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(230, 74, 139, 0.35);
+}
+
+/* Active (when clicked) */
+#booking a:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(230, 74, 139, 0.25);
+}
+
+
+
+/* === Gallery Section (hidden) === */
+#gallery {}
+#gallery button {}
+
+/* === Contact Section === */
+#contact {}
+#contact h2 {}
+#contact a {}
+
+/* === Footer === */
+footer {
+  margin-top: 2rem;
+  width: 100%;
+  background-color: #000;                     /* Deep black base for contrast */
+  color: #fbe4e7;                             /* Cherub pink for soft glam text */
+  text-align: center;                         /* Everything centered neatly */
+  padding: 1.2rem 0.5rem;                     /* Compact height, mobile friendly */
+  font-size: 0.85rem;                         /* Refined small font */
+  position: relative;                         /* For possible future elements (e.g. glow line) */
+  box-shadow: 0 -2px 6px rgba(240, 142, 173, 0.25); /* Soft pink glow on top */
+}
+
+/* Contact links inside footer */
+footer #contact {
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;                            /* Wrap on mobile screens */
+}
+
+/* Link styling */
+footer a {
+  color: #f08ead;                             /* Mauvelous pink — balanced & readable */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+/* Hover effect for glam feel */
+footer a:hover {
+  color: #fbe983;                             /* Sweet Corn gold highlight */
+  transform: translateY(-2px);                /* Tiny lift for interactivity */
+}
+
+/* The copyright */
+footer p {
+  margin: 0;
+  font-weight: 400;
+  color: #e4c9b4;                             /* Grain Brown — soft neutral accent */
+}
+
+/* Strong text (your studio credit) */
+footer strong {
+  color: #f08ead;                             /* Mauvelous pink for branding consistency */
+  font-weight: 600;
+}
+
+/* Optional: glowing line above footer for separation */
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #f08ead, transparent);
+  opacity: 0.8;
+}
+
+
+/* === Responsive Layout Breakpoints === */
+
+:root {
+/* === Colours === */
+--cherub: #fbe4e7;
+--mauvelous: #f08ead;
+--sweet-corn: #fbe983;
+--grain-brown: #e4c9b4;
+--matrix: #a75b52;
+--white: #ffffff;
+--black: #000000;
+
+/* === Spacing === */
+--space-xxs: 0.25rem;
+--space-xs: 0.5rem;
+--space-sm: 1rem;
+--space-md: 1.5rem;
+--space-lg: 2rem;
+--space-xl: 3rem;
+
+/* === Typography === */
+--font-main: 'Poppins', sans-serif;
+--font-bold: 700;
+--font-regular: 400;
+--font-size-base: 1rem;
+--font-size-lg: 1.5rem;
+--font-size-xl: 2rem;
+
+/* === Layout === */
+--max-width: 1200px;
+--border-radius: 8px;
+}
+
+/* === Global Reset === */
+
+{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+html, body {
+width: 100%;
+height: 100%;
+}
+
+body {
+font-family: var(--font-main);
+color: var(--black);
+background: var(--cherub);
+}
+

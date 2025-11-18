@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Hub Lashes — Gallery & Testimonials</title>
+  <link rel="stylesheet" href="assests/stylesheets/styles.css">
+  <link rel="stylesheet" href="assests/stylesheets/gallery.css">
+  <link rel="icon" href="assests/images/favicons/luxuryhubfavicon.ico" sizes="any">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<main>
+<header id="site-header">
+    
+    <button id="burger-toggle">&#9776;</button>
+    <nav id="primary-nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="booking.html">Booking</a>
+      <a href="gallery.html">Gallery</a>
+    </nav>
+    <div class="logo-container">
+    <img src="assests/images/LuxuryHubLogo.svg" alt="luxuryhub logo" class="logo">
+  </div>
+  </header>
+
+  <hr>
+
+  
+    <section id="gallery">
+  <div class="gallery-wrapper">
+    <!-- Gallery Grid -->
+    <div class="gallery-grid">
+      <img src="assests/images/hybridsetlashes.jpg" alt="Lash Set 1" data-title="Classic Set" data-testimonial="Loved it!">
+      <img src="assests/images/hybridsetlashes.jpg" alt="Lash Set 1" data-title="Classic Set" data-testimonial="Loved it!">
+      <img src="assests/images/hybridsetlashes.jpg" alt="Lash Set 1" data-title="Classic Set" data-testimonial="Loved it!">
+      <img src="assests/images/hybridsetlashes.jpg" alt="Lash Set 1" data-title="Classic Set" data-testimonial="Loved it!">
+      <img src="assests/images/hybridsetlashes.jpg" alt="Lash Set 1" data-title="Classic Set" data-testimonial="Loved it!">
+      <img src="assests/images/hybridsetlashes.jpg" alt="Lash Set 1" data-title="Classic Set" data-testimonial="Loved it!">
+      <img src="assests/images/hybridsetlashes.jpg" alt="Lash Set 1" data-title="Classic Set" data-testimonial="Loved it!">
+      <img src="assests/images/hybridsetlashes.jpg" alt="Lash Set 1" data-title="Classic Set" data-testimonial="Loved it!">
+      <img src="assests/images/hybridsetlashes.jpg" alt="Lash Set 1" data-title="Classic Set" data-testimonial="Loved it!">
+      
+    </div>
+
+    <!-- Details Pane -->
+    <div class="details-pane">
+      <h3 id="detail-title">Select an image</h3>
+      <p id="detail-testimonial">Click an image to see details and testimonial.</p>
+      <button class="upload-btn">Upload Your Testimonial</button>
+    </div>
+  </div>
+</section>
+
+  
+
+  <footer>
+    <p>© <span id="year"></span> Luxury Hub Lashes | Website by <strong>Kreative Visualz</strong></p>
+  </footer>
+
+  <script defer src="assests/scripts/script.js"></script>
+</main>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

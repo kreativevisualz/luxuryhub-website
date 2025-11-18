@@ -1,0 +1,344 @@
+/* ===================================
+   ROOT VARIABLES
+=================================== */
+:root {
+  /* Colours */
+  --pink: #f8bcd0;
+  --gold: #d4af37;
+  --black: #111;
+  --white: #fff;
+  --gray: #eee;
+
+  /* Spacing scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+  --space-xl: 64px;
+
+  /* Radius and shadow */
+  --radius: 8px;
+  --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  /* Typography */
+  --font-main: "Cormorant Garamond", serif;
+}
+
+/* ===================================
+   GLOBAL RESET
+=================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--white);
+  line-height: 1.6;
+  back
+}
+
+/* ===================================
+   HEADER
+=================================== */
+header {
+  margin-bottom: var(--space-lg);
+}
+
+header h1 {
+  font-size: 1.8rem;
+  color: var(--black);
+}
+
+header .tagline {
+  color: var(--gold);
+  font-weight: 600;
+  margin-top: var(--space-sm);
+}
+
+/* ===================================
+   AVAILABILITY SECTION
+=================================== */
+.availability {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  font-size: 1.5rem;
+}
+
+.availability h3 {
+  margin-bottom: var(--space-sm);
+  color: var(--gold);
+}
+
+.availability .locations {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.availability .note {
+  font-size: 0.9rem;
+  color: #a7a6a6;
+  font-weight: 600;
+}
+
+/* ===================================
+   CALENDAR SECTION
+=================================== */
+/* ===================================
+   CALENDAR SECTION
+=================================== */
+.calendar {
+  margin: auto;
+  max-width: fit-content;
+  padding: var(--space-md);
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.calendar-header button {
+  border: none;
+  background: transparent;
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: var(--gold);
+  transition: 0.2s ease;
+}
+
+.calendar-header button:hover {
+  transform: scale(1.15);
+}
+
+.calendar h3 {
+  color: var(--black);
+  font-weight: 900;
+  font-size: 1.6rem;
+  text-align: center;
+  padding-bottom: 1.5rem;
+}
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2rem;
+  text-align: center;
+}
+
+.day {
+  padding: var(--space-sm);
+  border-radius: var(--radius);
+  transition: 0.2s ease;
+  cursor: pointer;
+  user-select: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgb(116, 98, 0);
+}
+
+/* ===== States ===== */
+.day:hover {
+  background-color: var(--pink);
+}
+
+.day.today {
+  background-color: var(--gold);
+  color: var(--white);
+  font-weight: bold;
+}
+
+.day.booked {
+  background-color: var(--gray);
+  color: #aaa;
+  cursor: not-allowed;
+}
+
+.day.available {
+  background-color: var(--white);
+  border: 1px solid var(--pink);
+  color: var(--black);
+}
+
+.day.inactive {
+  color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Optional: transition effect for month change */
+.calendar-days {
+  transition: all 0.3s ease;
+}
+
+
+/* ===================================
+   BOOKING MODAL (SKELETON)
+=================================== */
+/* ===================================
+   BOOKING MODAL
+=================================== */
+#bookingModal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+#bookingModal.active {
+  display: flex; /* Show when active */
+}
+
+.modal-content {
+  background: var(--white);
+  padding: var(--space-lg);
+  border-radius: var(--radius);
+  width: 90%;
+  max-width: 400px;
+  box-shadow: var(--shadow);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--gold);
+  transition: 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#bookingForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vh;
+  
+}
+#selectedDate {
+  border-radius: 5px;
+  border: 1px solid pink;
+  padding: 0.5rem;
+  background-color: var(--gold);
+  color: var(--white);
+}
+#name {
+  border-radius: 5px;
+  border: 1px solid pink;
+  padding: 0.5rem;
+  background-color: var(--gold);
+  color: var(--white);
+}
+#service {
+  border-radius: 5px;
+  border: 1px solid pink;
+  padding: 0.5rem;
+  background-color: var(--gold);
+  color: var(--white);
+
+}
+#time {
+  border-radius: 5px;
+  border: 1px solid pink;
+  padding: 0.5rem;
+  background-color: var(--gold);
+  color: var(--white);
+}
+#location {
+  border-radius: 5px;
+  border: 1px solid pink;
+  padding: 0.5rem;
+  background-color: var(--gold);
+  color: var(--white);
+}
+.submit-btn {
+  margin: 1.5rem auto;
+  padding: 0.3rem;
+  width: fit-content;
+  border-radius: 5px;
+  border: 1px solid var(--gold);
+  padding: 0.5rem;
+  background-color: var(--pink);
+  color: var(--black);
+  font-weight: 900;
+}
+
+#bookingModal h3 {
+  text-align: center;
+  margin: 1.2rem;
+  font-weight: 900;
+  color: var(--pink);
+  font-size: 1.5rem;
+}
+
+/* ===================================
+   CONTACT SECTION
+=================================== */
+#contact {
+  text-align: center;
+  padding: var(--space-lg) var(--space-md);
+}
+
+#contact a {
+  display: block;
+  margin: var(--space-sm) 0;
+  color: var(--black);
+  text-decoration: none;
+}
+
+#contact a:hover {
+  color: var(--gold);
+}
+
+/* ===================================
+   FOOTER
+=================================== */
+footer {
+  text-align: center;
+  margin-top: var(--space-lg);
+  padding: var(--space-sm);
+  border-top: 1px solid var(--gray);
+  font-size: 0.9rem;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+=================================== */
+@media (max-width: 768px) {
+  body {
+  }
+
+  #calendar {
+    width: 100%;
+  }
+
+  .calendar-days {
+    gap: var(--space-xs);
+  }
+}

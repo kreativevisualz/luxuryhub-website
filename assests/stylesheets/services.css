@@ -1,0 +1,155 @@
+:root {
+  --pink: #f8bcd0;
+  --gold: #d4af37;
+  --black: #111;
+  --white: #fff;
+  --gray: #f7f7f7;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+  --space-xl: 64px;
+
+  --radius: 14px;
+  --shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Poppins", sans-serif;
+}
+
+/* RESET & LAYOUT (Sticky Footer Implementation) */
+html, body {
+  height: 100%; /* Ensure html and body take full height */
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--gray);
+  color: var(--black);
+  min-height: 100vh; /* Ensure body is at least the full viewport height */
+  display: flex; /* Activate Flexbox */
+  flex-direction: column; /* Stack children vertically */
+}
+
+/* HEADER */
+header.services-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  padding-top: var(--space-md); /* Add some padding to the top */
+}
+.services-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem !important;
+  margin-top: 1rem;
+  color: var(--gold);
+}
+.services-sub {
+  color: var(--pink);
+  margin-top: var(--space-xs);
+}
+
+/* STACKED SECTION (Now a standard container) */
+section.carousel {
+  display: flex;
+  flex-direction: column; /* Stacks cards vertically by default */
+  align-items: center;
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  /* Remove perspective for 3D effect */
+  flex: 1; /* This makes the main content area grow to fill available space, pushing the footer down */
+  padding-bottom: var(--space-lg); /* Add padding above the footer */
+}
+
+/* CARDS (No more 3D positioning) */
+.service-card {
+  width: 90%;
+  margin: var(--space-md) auto; /* Add vertical margin between cards */
+  background: var(--white) !important;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  position: relative; /* Change from absolute to relative for normal stacking */
+  transition: all 0.4s ease;
+  cursor: pointer;
+  transform: none !important; /* Explicitly remove any 3D transforms */
+  z-index: auto !important; /* Reset z-index */
+}
+
+/* 3D staggered layering (REMOVED: these rules are now redundant and overridden) */
+.service-card:nth-child(1) { }
+.service-card:nth-child(2) { }
+.service-card:nth-child(3) { }
+.service-card:nth-child(4) { }
+
+/* Hover pop-up effect */
+.service-card:hover {
+  transform: translateY(-5px) scale(1.02); /* Simple pop effect */
+  z-index: 10;
+}
+
+/* CARD CONTENT */
+.card-media {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+.card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-body {
+  padding: var(--space-md);
+  text-align: center;
+}
+.card-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--black);
+  margin-bottom: var(--space-xs);
+}
+.card-desc {
+  font-size: 0.95rem;
+  color: #555;
+}
+.card-cta {
+  display: inline-block;
+  margin-top: var(--space-sm);
+  background: var(--pink);
+  color: var(--white);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.card-cta:hover {
+  background: var(--gold);
+  color: var(--black);
+}
+
+footer {
+  /* Removed position: fixed */
+  margin-top: auto; /* Pushes the footer to the bottom of the remaining space */
+  padding: var(--space-md);
+  background-color: var(--black);
+  color: var(--white);
+  text-align: center;
+  /* Removed height: 60px; allowing content to define height */
+}
+
+/* RESPONSIVE (Now standard layout on all sizes) */
+@media (max-width: 768px) {
+  section.carousel {
+    max-width: 100%;
+  }
+  .service-card {
+    position: static; /* Ensure standard flow on mobile (already handled above but kept for clarity) */
+    transform: none !important;
+    margin-bottom: var(--space-md);
+  }
+}
