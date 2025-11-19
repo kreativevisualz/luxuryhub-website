@@ -21,8 +21,14 @@ burger.addEventListener("click", () => {
 
 aboutbtn.addEventListener("click", () => {
   about.classList.toggle("about-open");
-  aboutbtn.classList.toggle("aboutbtn-open")
+  aboutbtn.classList.toggle("aboutbtn-open");
 })
+
+if (aboutbtn.classList.contains("aboutbtn-open")) {
+  aboutbtn.textContent = "Click to close this section<<<";
+} else {
+  aboutbtn.textContent = "Click to find out more about us>>>"
+}
 
 
 btnLeft.addEventListener('click', () => {

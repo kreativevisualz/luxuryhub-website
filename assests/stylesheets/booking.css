@@ -37,7 +37,6 @@ body {
   font-family: var(--font-main);
   color: var(--white);
   line-height: 1.6;
-  back
 }
 
 /* ===================================
@@ -45,11 +44,6 @@ body {
 =================================== */
 header {
   margin-bottom: var(--space-lg);
-}
-
-header h1 {
-  font-size: 1.8rem;
-  color: var(--black);
 }
 
 header .tagline {

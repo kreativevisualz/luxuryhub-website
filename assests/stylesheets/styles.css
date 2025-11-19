@@ -41,7 +41,7 @@
 }
 
 html, body {
-  overflow-x: hidden; /* hides any accidental side scroll */
+  /* overflow-x: hidden; hides any accidental side scroll */
 }
 
 html, body {
@@ -51,11 +51,13 @@ font-size: 16px;
 }
 
 body {
-  background-color: #000;
+  /* background-color: #000; */
 }
 
 /* === Header === */
-header {}
+header {
+  margin-bottom: 32px;
+}
 
 header h1 {
     font-family: 'Cormorant Garamond', serif;
@@ -83,19 +85,18 @@ hr {
 
 /* The logo image itself */
 .logo-container {
- display: flex;
- align-items: center;
- justify-content: center;
- margin-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
 }
 
 .logo {
-   width: 150px;       /* or whatever max size you want */
-  max-width: 40vw;    /* responsive: won't exceed 40% of viewport width */
-  height: auto;   
-  padding: 2rem;
-  padding-top: 0;
+  width: 70vw;
+  max-width: 280px;
+  height: auto;
 }
+
 
 #burger-toggle {
   background-color:rgba(255, 255, 255, 0);
@@ -130,14 +131,12 @@ main {
   /* Background image + dark semi-transparent overlay in one line */
   background: 
     linear-gradient(rgba(24, 24, 24, 0.685),rgba(24, 24, 24, 0.685)), /* dark overlay */
-    url('assests/images/Background-LashesCollage.jpg') center/cover no-repeat;
-  
+    url("/assests/images/Background-LashesCollage.jpg") center center repeat-y;
+  background-size: cover;
   width: 100%;
   height: 100%;
   overflow-x: hidden;
 }
-
-
 
 .menu-toggle {}
 .nav-links {}
@@ -311,7 +310,7 @@ main {
 
 .service-card .btn {
   width: fit-content;
-  margin: 3rem;
+  margin: 2rem;
   padding: 7px;
   border-radius: 10px;
   text-decoration: none;
@@ -382,6 +381,7 @@ main {
   border: none;
   border-radius: 50px;
   cursor: pointer;
+  text-align: center;
   text-transform: uppercase;
   box-shadow: 0 4px 8px rgba(255, 59, 167, 0.3);
   position: relative;
@@ -565,12 +565,6 @@ footer::before {
 
 /* === Global Reset === */
 
-{
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
-
 html, body {
 width: 100%;
 height: 100%;
@@ -579,11 +573,16 @@ height: 100%;
 body {
 font-family: var(--font-main);
 color: var(--black);
-background: var(--cherub);
 }
 
 @media (max-width: 480px) {
   .logo {
-    width: 120px;
+    width: 80vw;
+    max-width: 240px;
+  }
+
+  main {
+    background-position: center top;  /* shift image so top is visible */
+    background-size: cover;           /* ensure it still covers */
   }
 }
