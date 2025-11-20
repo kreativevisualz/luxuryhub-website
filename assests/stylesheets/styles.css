@@ -317,7 +317,7 @@ main {
   color: var(--black);
   background-color: var(--matrix);
   border: var(--black) 1.2px solid;
-
+  font-size: 0.8rem;
 }
 
 .service-card .btn:hover {
