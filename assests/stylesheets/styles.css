@@ -1,50 +1,67 @@
 :root {
-/* === Colours === */
---cherub: #fbe4e7;
---mauvelous: #f08ead;
---sweet-corn: #fbe983;
---grain-brown: #e4c9b4;
---matrix: #a75b52;
---white: #ffffff;
---black: #000000;
- --gold: #d4af37; /* warm metallic gold */
---text-dark: #111;
---text-light: #fff;
+  /* === Colours === */
+  --cherub: #fbe4e7;
+  --mauvelous: #f08ead;
+  --sweet-corn: #fbe983;
+  --grain-brown: #e4c9b4;
+  --matrix: #a75b52;
+  --white: #ffffff;
+  --black: #000000;
+  --gold: #d4af37;
+  --text-dark: #111;
+  --text-light: #fff;
 
-/* === Spacing === */
---space-xxs: 0.25rem;
---space-xs: 0.5rem;
---space-sm: 1rem;
---space-md: 1.5rem;
---space-lg: 2rem;
---space-xl: 3rem;
+  /* === Spacing === */
+  --space-xxs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
 
-/* === Typography === */
---font-main: 'Poppins', sans-serif;
---font-bold: 700;
---font-regular: 400;
---font-size-base: 1rem;
---font-size-lg: 1.5rem;
---font-size-xl: 2rem;
+  /* === Typography === */
+  --font-main: 'Poppins', sans-serif;
+  --font-bold: 700;
+  --font-regular: 400;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.5rem;
+  --font-size-xl: 2rem;
 
-/* === Layout === */
---max-width: 1200px;
---border-radius: 8px;
+  /* === Layout === */
+  --max-width: 1200px;
+  --border-radius: 8px;
 }
 
 /* === Global Reset === */
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  background-color: #000;
+html {
   font-size: 16px;
+  background-color: var(--black); /* Prevents white bar on overscroll */
+  height: 100%;
+}
+
+body {
   font-family: var(--font-main);
-color: var(--black);
+  color: var(--gold);
+  min-height: 100vh;
+  overflow-x: hidden; /* Hides accidental side scroll */
+
+  /* === BACKGROUND FIX === */
+  /* We apply the background here so it covers the whole page */
+  background-color: var(--black);
+  background-image: 
+    linear-gradient(rgba(24, 24, 24, 0.7), rgba(24, 24, 24, 0.7)), /* Dark overlay */
+    url("/assests/images/Background-LashesCollage.jpg");
+  
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover; /* Ensures image covers screen without gaps */
+  background-attachment: fixed; /* Keeps image static while you scroll */
 }
 
 /* === Header === */
@@ -53,19 +70,19 @@ header {
 }
 
 header h1 {
-    font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
   font-size: 2rem;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 1.5px;
-
-  /* Metallic gold effect using gradient */
+  
+  /* Metallic gold effect */
   background: linear-gradient(90deg, #c9a54a, #fceabb, #b8860b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  margin-bottom: 0.4rem
+  
+  margin-bottom: 0.4rem;
 }
 
 hr {
@@ -74,7 +91,6 @@ hr {
   margin: auto;
   background-color: var(--black);
 }
-
 
 /* The logo image itself */
 .logo-container {
@@ -90,20 +106,16 @@ hr {
   height: auto;
 }
 
-
 #burger-toggle {
-  background-color:rgba(255, 255, 255, 0);
+  background-color: transparent;
   color: var(--gold);
   border: none;
   font-size: 1.5rem;
   padding: 1rem;
-  
-
 }
 
 #primary-nav {
   display: none;
-  background: rgba();
 }
 
 header.open #primary-nav {
@@ -117,22 +129,11 @@ header.open #primary-nav {
   color: var(--cherub);
 }
 
+/* === Main Content === */
 main {
-  font-family: var(--font-main);
-  color: var(--gold);
-
-  /* Background image + dark semi-transparent overlay in one line */
-  background: 
-    linear-gradient(rgba(24, 24, 24, 0.685),rgba(24, 24, 24, 0.685)), /* dark overlay */
-    url("/assests/images/Background-LashesCollage.jpg") center center repeat-y;
-  background-size: cover;
   width: 100%;
-  min-height: 100vh;
-  overflow-x: hidden;
+  /* Background removed from here and moved to Body */
 }
-
-.menu-toggle {}
-.nav-links {}
 
 /* === Hero Section === */
 .hero {
@@ -143,19 +144,18 @@ main {
 }
 
 .hero h2 {
- font-family: 'Cormorant Garamond', serif;
-  font-weight: 400;
-  font-size: 1.2rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 600;
   color: var(--text-light);
   text-align: center;
-  opacity: 0.9; font-size: 1.4rem;
-  font-weight: 600;
-  padding:1rem;
-
+  opacity: 0.9;
+  padding: 1rem;
 }
+
 .hero p {
   font-size: 1rem;
-  padding:0.5rem;
+  padding: 0.5rem;
 }
 
 #hero2 {
@@ -163,16 +163,16 @@ main {
 }
 
 #hero3 {
-  font-size: 0.75rem ;
+  font-size: 0.75rem;
   font-style: italic;
   margin-bottom: 2rem;
   width: 100%;
-
 }
+
 .hero a {
-  width: fit-content;
-  margin: 3rem;
-  padding: 7px;
+  display: inline-block; /* Ensures padding works */
+  margin: 3rem auto;
+  padding: 10px 20px;
   border-radius: 10px;
   text-decoration: none;
   color: var(--black);
@@ -187,22 +187,15 @@ main {
 }
 
 /* === About Section === */
-
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-15px);
-  }
-  60% {
-    transform: translateY(-8px);
-  }
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-15px); }
+  60% { transform: translateY(-8px); }
 }
 
 #AboutButton {
   text-align: center;
-  margin-top:2.5rem;
+  margin-top: 2.5rem;
   margin-bottom: 2rem;
   font-size: 1rem;
   font-weight: 600;
@@ -220,7 +213,7 @@ main {
 }
 
 .about h2 {
- font-family: 'Cormorant Garamond', serif;
+  font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
   font-size: 1.4rem;
   margin-bottom: 0.8rem;
@@ -237,11 +230,7 @@ main {
   animation: none;
 }
 
-#about h2 {}
-#about p {}
-
 /* === Services Section === */
-#services {}
 #services h2 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 400;
@@ -263,27 +252,28 @@ main {
   display: flex;
   overflow-x: auto;
   scroll-behavior: smooth;
-   scroll-snap-type: x mandatory; /* enables snap behaviour */
+  scroll-snap-type: x mandatory;
   gap: 1rem;
   padding: 1rem;
-  scrollbar-width: none; /* hide scrollbar on Firefox */
+  scrollbar-width: none; /* Firefox */
   width: 80%;
   margin: auto;
 }
+
 .services-wrapper::-webkit-scrollbar {
-  display: none; /* hide scrollbar on Chrome/Safari */
+  display: none; /* Chrome/Safari */
 }
 
 .service-card {
-  flex: 1 0 100%; 
-   scroll-snap-align: center;
+  flex: 1 0 100%;
+  scroll-snap-align: center;
   background: var(--black);
   border-radius: 10px;
   padding: 0.8rem;
   padding-top: 3rem;
   padding-bottom: 3rem;
   text-align: center;
-
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
 }
 
 /* arrow buttons */
@@ -301,10 +291,13 @@ main {
   z-index: 1;
 }
 
+.scroll-btn.left { left: 0.3rem; }
+.scroll-btn.right { right: 0.3rem; }
+
 .service-card .btn {
-  width: fit-content;
-  margin: 2rem;
-  padding: 7px;
+  display: inline-block;
+  margin: 2rem auto;
+  padding: 7px 14px;
   border-radius: 10px;
   text-decoration: none;
   color: var(--black);
@@ -314,7 +307,7 @@ main {
 }
 
 .service-card .btn:hover {
-   color: var(--cherub);
+  color: var(--cherub);
   background-color: var(--black);
   border: var(--matrix) 1.2px solid;
 }
@@ -323,29 +316,23 @@ main {
   padding: 1.5rem;
 }
 
-
-.scroll-btn.left { left: 0.3rem; }
-.scroll-btn.right { right: 0.3rem; }
-
-
 /* === Booking Section === */
 #booking {
-  display:flex;
+  display: flex;
   width: 60%;
   flex-direction: column;
   margin: auto;
 }
+
 #booking h2 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   font-family: 'Playfair Display', serif;
   font-weight: 400;
   font-size: 2rem;
-
   text-align: center;
   letter-spacing: 0.3px;
   opacity: 0.8;
-
 }
 
 #booking li {
@@ -360,13 +347,15 @@ main {
 }
 
 #buttoncont {
-  display:flex;
+  display: flex;
+  justify-content: center;
   margin-bottom: 2rem;
   gap: 1rem;
+  flex-wrap: wrap; /* Ensures buttons stack if screen is too small */
 }
 
 #booking button {
-  background: linear-gradient(145deg, #ff8ecf, #ff3ba7); /* pink gradient base */
+  background: linear-gradient(145deg, #ff8ecf, #ff3ba7);
   color: #fff;
   font-size: 1rem;
   font-weight: 600;
@@ -382,7 +371,6 @@ main {
   transition: all 0.3s ease;
 }
 
-/* Glossy top highlight */
 #booking button::before {
   content: "";
   position: absolute;
@@ -396,33 +384,30 @@ main {
   transition: opacity 0.3s ease;
 }
 
-/* Hover effect */
 #booking button:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(255, 59, 167, 0.4);
 }
 
-/* Active/Pressed state */
 #booking button:active {
   transform: translateY(1px);
   box-shadow: 0 2px 6px rgba(255, 59, 167, 0.4);
 }
 
-#booking a{
-  display: inline-block;              /* makes <a> act like a button */
-  padding: 0.5rem 1.25rem;            /* smaller, refined padding */
-  font-size: 0.9rem;                  /* elegant, not oversized */
-  font-weight: 500;                   /* medium weight feels modern */
-  color: #fff;                        /* white text for contrast */
-  background: linear-gradient(135deg, #ff66b2, #e64a8b); /* rich pink gradient */
-  border-radius: 30px;                /* soft rounded corners */
-  text-decoration: none;              /* remove underline */
-  position: relative;                 /* for the highlight overlay */
-  transition: all 0.25s ease;         /* smooth hover transition */
-  box-shadow: 0 3px 6px rgba(230, 74, 139, 0.25); /* subtle glow */
+#booking a {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #fff;
+  background: linear-gradient(135deg, #ff66b2, #e64a8b);
+  border-radius: 30px;
+  text-decoration: none;
+  position: relative;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 6px rgba(230, 74, 139, 0.25);
 }
 
-/* Add the soft glossy reflection */
 #booking a::before {
   content: "";
   position: absolute;
@@ -430,86 +415,67 @@ main {
   left: 0;
   width: 100%;
   height: 40%;
-  background: rgba(255, 255, 255, 0.25); /* white shine */
+  background: rgba(255, 255, 255, 0.25);
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
   transition: opacity 0.3s ease;
 }
 
-/* Hover: slightly brighter, lifted look */
 #booking a:hover {
   background: linear-gradient(135deg, #ff7ac4, #f05fa3);
   transform: translateY(-2px);
   box-shadow: 0 5px 10px rgba(230, 74, 139, 0.35);
 }
 
-/* Active (when clicked) */
 #booking a:active {
   transform: translateY(1px);
   box-shadow: 0 2px 4px rgba(230, 74, 139, 0.25);
 }
 
-
-
-/* === Gallery Section (hidden) === */
-#gallery {}
-#gallery button {}
-
-/* === Contact Section === */
-#contact {}
-#contact h2 {}
-#contact a {}
-
 /* === Footer === */
 footer {
   margin-top: 2rem;
   width: 100%;
-  background-color: #000;                     /* Deep black base for contrast */
-  color: #fbe4e7;                             /* Cherub pink for soft glam text */
-  text-align: center;                         /* Everything centered neatly */
-  padding: 1.2rem 0.5rem;                     /* Compact height, mobile friendly */
-  font-size: 0.85rem;                         /* Refined small font */
-  position: relative;                         /* For possible future elements (e.g. glow line) */
-  box-shadow: 0 -2px 6px rgba(240, 142, 173, 0.25); /* Soft pink glow on top */
+  background-color: #000;
+  color: #fbe4e7;
+  text-align: center;
+  padding: 1.2rem 0.5rem;
+  font-size: 0.85rem;
+  position: relative;
+  box-shadow: 0 -2px 6px rgba(240, 142, 173, 0.25);
 }
 
-/* Contact links inside footer */
 footer #contact {
   margin-bottom: 0.5rem;
   display: flex;
   justify-content: center;
   gap: 1rem;
-  flex-wrap: wrap;                            /* Wrap on mobile screens */
+  flex-wrap: wrap;
 }
 
-/* Link styling */
 footer a {
-  color: #f08ead;                             /* Mauvelous pink — balanced & readable */
+  color: #f08ead;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.25s ease, transform 0.25s ease;
 }
 
-/* Hover effect for glam feel */
 footer a:hover {
-  color: #fbe983;                             /* Sweet Corn gold highlight */
-  transform: translateY(-2px);                /* Tiny lift for interactivity */
+  color: #fbe983;
+  transform: translateY(-2px);
 }
 
-/* The copyright */
 footer p {
   margin: 0;
   font-weight: 400;
-  color: #e4c9b4;                             /* Grain Brown — soft neutral accent */
+  color: #e4c9b4;
 }
 
-/* Strong text (your studio credit) */
 footer strong {
-  color: #f08ead;                             /* Mauvelous pink for branding consistency */
+  color: #f08ead;
   font-weight: 600;
 }
 
-/* Optional: glowing line above footer for separation */
 footer::before {
   content: "";
   position: absolute;
@@ -522,15 +488,13 @@ footer::before {
   opacity: 0.8;
 }
 
+/* === Responsive Layout Breakpoints === */
+
 @media (max-width: 480px) {
   .logo {
     width: 80vw;
     max-width: 240px;
   }
-
-  main {
-    height: 100%;
-    background-position: center top;  /* shift image so top is visible */
-    background-size: cover;           /* ensure it still covers */
-  }
+  
+  /* Since background is now on body, we don't need main adjustments here */
 }
