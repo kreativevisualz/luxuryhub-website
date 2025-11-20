@@ -274,7 +274,7 @@ main {
   gap: 1rem;
   padding: 1rem;
   scrollbar-width: none; /* hide scrollbar on Firefox */
-  width: 60%;
+  width: 80%;
   margin: auto;
 }
 .services-wrapper::-webkit-scrollbar {
@@ -282,13 +282,13 @@ main {
 }
 
 .service-card {
-  flex: 0 0 100%; 
+  flex: 1 0 100%; 
    scroll-snap-align: center;
   background: var(--black);
   border-radius: 10px;
-  padding: 1rem;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+  padding: 0.8rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   text-align: center;
 
 }
@@ -582,6 +582,7 @@ color: var(--black);
   }
 
   main {
+    height: 100%;
     background-position: center top;  /* shift image so top is visible */
     background-size: cover;           /* ensure it still covers */
   }
