@@ -11,6 +11,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet"> 
   <link rel="icon" href="assests/images/favicons/luxuryhubfavicon.ico" sizes="any">
+
+
+  <!-- Booking Email Conformation -->
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function(){
+     emailjs.init("gOHD01j5t52qgFfeE");
+  })();
+</script>
+
+
 </head>
 <body>
 
@@ -58,33 +70,40 @@
         <h3>Book Your Appointment</h3>
 
         <form id="bookingForm">
-          <label for="selectedDate">Date:</label>
-          <input type="text" id="selectedDate" readonly />
+  <label for="selectedDate">Date:</label>
+  <input type="text" id="selectedDate" readonly />
 
-          <label for="name">Full Name:</label>
-          <input type="text" id="name" required />
+  <label for="name">Full Name:</label>
+  <input type="text" id="name" required />
 
-          <label for="service">Service:</label>
-          <select id="service" required>
-            <option>Select Service</option>
-            <option>Classic Set</option>
-            <option>Hybrid Set</option>
-            <option>Volume Set</option>
-            <option>Fluffy Set</option>
-          </select>
+  <label for="phone">Phone Number:</label>
+  <input type="number" id="phone" required />
 
-          <label for="time">Preferred Time:</label>
-          <input type="time" id="time" required />
+  <label for="email">Email Address:</label>
+  <input type="email" id="email" required />
 
-          <label for="location">Location:</label>
-          <select id="location" required>
-            <option>Select Location</option>
-            <option>Klerksdorp</option>
-            <option>Potchefstroom</option>
-          </select>
+  <label for="service">Service:</label>
+  <select id="service" required>
+    <option value="">Select Service</option>
+    <option>Classic Set</option>
+    <option>Hybrid Set</option>
+    <option>Volume Set</option>
+    <option>Fluffy Set</option>
+  </select>
 
-          <button type="submit" class="submit-btn">Confirm Booking</button>
-        </form>
+  <label for="location">Location:</label>
+  <select id="location" required>
+    <option value="">Select Location</option>
+    <option>Klerksdorp</option>
+    <option>Potchefstroom</option>
+  </select>
+
+  <label for="notes">Notes (Optional):</label>
+  <textarea id="notes" rows="3"></textarea>
+
+  <button type="submit" class="submit-btn">Confirm Booking</button>
+</form>
+
       </div>
     </div>
 
