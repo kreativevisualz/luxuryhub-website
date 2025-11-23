@@ -15,8 +15,8 @@ const locationInput = document.getElementById("location");
 /* =========================================================
    NOTION SETUP
 ========================================================= */
-const NOTION_SECRET = "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";
-const NOTION_DATABASE_ID = "2b267f73973780ae92cbe1b7edd3ecfe";
+const NOTION_SECRET = process.env.NOTION_SECRET;
+const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID;
 
 async function fetchApprovedDays() {
   try {
