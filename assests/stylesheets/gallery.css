@@ -21,7 +21,7 @@
    GALLERY SECTION
 =================================== */
 #gallery {
-  min-height: 90vh;
+  min-height: 0vh;
   padding: var(--space-lg) var(--space-md);
   
   display: flex;
@@ -30,8 +30,18 @@
   
 }
 
-.gallery-wrapper {
+#unavailable {
+  font-size: 2rem;
+  text-align: center;
   display: flex;
+  align-content: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.gallery-wrapper {
+  display: none;
+  height: 0;
   justify-content: space-between;
   align-items: stretch;
   width: 90%;
