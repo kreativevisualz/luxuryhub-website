@@ -1,0 +1,14 @@
+body {
+    display: flex; justify-content: center; align-items: center; height: 100vh;
+    background: #f8bcd0; font-family: sans-serif; margin: 0;
+}
+.login-box {
+    background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center;
+}
+input {
+    display: block; width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;
+}
+button {
+    background: #d4af37; color: white; border: none; padding: 10px 20px; cursor: pointer; border-radius: 4px; font-weight: bold; width: 100%;
+}
+.hidden { display: none; color: red; font-size: 0.9em; }

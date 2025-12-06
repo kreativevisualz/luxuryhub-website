@@ -1,0 +1,11 @@
+body { font-family: sans-serif; background: #fafafa; margin: 0; padding: 20px; }
+header { display: flex; justify-content: space-between; margin-bottom: 20px; }
+.panel { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { text-align: left; padding: 10px; border-bottom: 1px solid #eee; }
+th { background-color: #f8bcd0; }
+.approved { color: green; font-weight: bold; }
+.pending { color: orange; font-weight: bold; }
+button.del { background: #ff4d4d; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor:pointer;}
+button.app { background: #d4af37; color: white; border: none; padding: 5px 10px; border-radius: 4px; margin-right:5px; cursor:pointer;}
+input, select { padding: 8px; margin: 5px; border: 1px solid #ddd; }

@@ -41,7 +41,7 @@
     <picture>
     <source srcset="assests/images/LuxuryHubLogo.svg" media="(max-width: 480px)">
     <source srcset="assests/images/LuxuryHubLogoPC.svg" media="(min-width: 481px)">
-    <img src="assests/images/LuxuryHubLogo.png" alt="Luxury Hub Lashes Logo" class="logo">
+    <img src="assests/images/LuxuryHubLogo.png" id="secret-trigger" alt="Luxury Hub Lashes Logo" class="logo">
   </picture>
   </div>
   </header>
@@ -77,8 +77,8 @@
   <input type="text" id="name" required />
 
   <label for="phone">Phone Number:</label>
-  <input type="number" id="phone" required />
-
+  <input type="tel" id="phone" pattern="[0-9]*" inputmode="numeric" placeholder="e.g. 0721234567" required />
+  
   <label for="email">Email Address:</label>
   <input type="email" id="email" required />
 
@@ -129,6 +129,30 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
   </script>
+
+<script>
+  // === SECRET ADMIN TRIGGER ===
+  const trigger = document.getElementById('secret-trigger');
+  const footer = document.querySelector('footer');
+  let taps = 0;
+  let timer;
+
+  // 1. Logo Taps (7 times quickly)
+  trigger.addEventListener('click', (e) => {
+      taps++;
+      clearTimeout(timer);
+      timer = setTimeout(() => taps = 0, 2000); // Reset if inactive for 2s
+      if (taps === 7) window.location.href = "admin/login.html";
+  });
+
+  // 2. Footer Long Press (2 seconds)
+  let pressTimer;
+  footer.addEventListener('touchstart', () => {
+      pressTimer = setTimeout(() => window.location.href = "admin/login.html", 2000);
+  });
+  footer.addEventListener('touchend', () => clearTimeout(pressTimer));
+</script>
 </body>
 </html>

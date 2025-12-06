@@ -11,68 +11,88 @@ const selectedDateInput = document.getElementById("selectedDate");
 const nameInput = document.getElementById("name");
 const serviceInput = document.getElementById("service");
 const locationInput = document.getElementById("location");
+const currentLocationText = document.getElementById("current-location");
 
 /* =========================================================
-   NOTION SETUP
+   CONFIGURATION
 ========================================================= */
-const NOTION_SECRET = process.env.NOTION_SECRET;
-const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID;
+// ⚠️ PASTE YOUR BIN ID HERE
+const BIN_ID = "69340d57ae596e708f873be1";
+const MASTER_KEY = "$2a$10$KN6bAogNbm.B.WYSut0/zOdIrYZa9xhgV.7quV4sBu/BaTxdLom0u"; // <--- NEW (Security Risk!)
 
+const API_URL = `https://api.jsonbin.io/v3/b/${BIN_ID}`;
+
+/* =========================================================
+   DATA FETCHING (UPDATED to use JSONBin)
+========================================================= */
 async function fetchApprovedDays() {
   try {
-    const response = await fetch("https://api.notion.com/v1/databases/" + NOTION_DATABASE_ID + "/query", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${NOTION_SECRET}`,
-        "Notion-Version": "2022-06-28",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        filter: {
-          property: "Booking Status",
-          select: { equals: "Approved" }
-        }
-      })
-    });
-
+    const response = await fetch(API_URL);
+    if (!response.ok) throw new Error("Network error");
+    
     const data = await response.json();
-    const approvedDates = data.results.map(p => p.properties["Booking Date"].date.start);
+    const record = data.record;
 
-    return approvedDates; // list of yyyy-mm-dd
+    // 1. UPDATE LOCATION TEXT ON HOMEPAGE
+    if (record.currentLocation && currentLocationText) {
+        currentLocationText.textContent = record.currentLocation;
+    }
+
+    // 2. EXTRACT BOOKINGS
+    const allBookings = record.bookings || [];
+    
+    // Filter for approved dates
+    const unavailableDates = allBookings
+      .filter(booking => booking.status === "Approved")
+      .map(booking => booking.date);
+      
+    return unavailableDates;
+    
   } catch (error) {
-    console.error("Error fetching approved days:", error);
+    console.error("Could not fetch data:", error);
     return [];
   }
 }
 
 /* =========================================================
-   CALENDAR GENERATION
+   CALENDAR GENERATION (Preserved Logic)
 ========================================================= */
 async function generateCalendar(year, month) {
+  if (!calendar) return;
+  
   calendar.innerHTML = "";
 
-  // Get approved days list from Notion
+  // 1. Get List of unavailable dates (Now from Cloud)
   const approvedDates = await fetchApprovedDays();
 
-  const monthStart = new Date(year, month, 1);
-  const monthEnd = new Date(year, month + 1, 0);
-  const totalDays = monthEnd.getDate();
+  // 2. Setup dates
+  const firstDayIndex = new Date(year, month, 1).getDay();
+  const lastDay = new Date(year, month + 1, 0).getDate();
 
-  for (let day = 1; day <= totalDays; day++) {
+  // Empty slots
+  for (let i = 0; i < firstDayIndex; i++) {
+     const emptyDiv = document.createElement("div");
+     calendar.appendChild(emptyDiv);
+  }
+
+  // 3. Create Days
+  for (let day = 1; day <= lastDay; day++) {
     const dayDiv = document.createElement("div");
     dayDiv.classList.add("day");
     dayDiv.textContent = day;
 
-    const dateObj = new Date(year, month, day);
-    const iso = dateObj.toISOString().split("T")[0];
+    const currentMonthStr = String(month + 1).padStart(2, "0");
+    const currentDayStr = String(day).padStart(2, "0");
+    const isoDate = `${year}-${currentMonthStr}-${currentDayStr}`;
 
-    // Mark approved days (greyed-out)
-    if (approvedDates.includes(iso)) {
+    // Mark approved days
+    if (approvedDates.includes(isoDate)) {
       dayDiv.classList.add("booked");
       dayDiv.title = "Fully booked";
+      // No click listener added for booked days
     } else {
-      // Open modal for available dates
-      dayDiv.addEventListener("click", () => openBookingModal(iso));
+      dayDiv.classList.add("available");
+      dayDiv.addEventListener("click", () => openBookingModal(isoDate));
     }
 
     calendar.appendChild(dayDiv);
@@ -83,13 +103,19 @@ async function generateCalendar(year, month) {
    MODAL OPEN / CLOSE
 ========================================================= */
 function openBookingModal(isoDate) {
-  selectedDateInput.value = new Date(isoDate).toDateString();
+  if(selectedDateInput) {
+    selectedDateInput.value = isoDate;
+  }
+  // If CSS uses .active or just display logic:
+  if(bookingModal.classList) bookingModal.classList.add("active");
   bookingModal.style.display = "flex";
 }
 
-closeBtn.addEventListener("click", () => {
-  bookingModal.style.display = "none";
-});
+if(closeBtn) {
+    closeBtn.addEventListener("click", () => {
+        bookingModal.style.display = "none";
+    });
+}
 
 window.addEventListener("click", (e) => {
   if (e.target === bookingModal) {
@@ -98,81 +124,109 @@ window.addEventListener("click", (e) => {
 });
 
 /* =========================================================
-   SEND TO NOTION + EMAILJS
+   EMAIL FUNCTIONALITY (Preserved)
 ========================================================= */
-async function addBookingToNotion(date, name, service, location) {
-  try {
-    const response = await fetch("https://api.notion.com/v1/pages", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${NOTION_SECRET}`,
-        "Notion-Version": "2022-06-28",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        parent: { database_id: NOTION_DATABASE_ID },
-        properties: {
-          "Full Name": { title: [{ text: { content: name } }] },
-          "Service": { select: { name: service } },
-          "Location": { select: { name: location } },
-          "Booking Date": { date: { start: date } },
-          "Booking Status": { select: { name: "Pending" } }
-        }
-      })
-    });
-
-    return await response.json();
-  } catch (error) {
-    console.error("Error inserting into Notion:", error);
-  }
-}
-
 async function sendEmail(date, name, service, location) {
-  return emailjs.send("service_6mvxrqw", "template_j5qlofp", {
-    date,
-    name,
-    service,
-    location
-  }, "gOHD01j5t52qgFfeE");
+    if (typeof emailjs !== "undefined") {
+        return emailjs.send("service_6mvxrqw", "template_j5qlofp", {
+            date,
+            name,
+            service,
+            location
+        });
+    } else {
+        console.warn("EmailJS not loaded");
+    }
 }
 
 /* =========================================================
    FORM SUBMIT HANDLER
 ========================================================= */
-bookingForm.addEventListener("submit", async (e) => {
-  e.preventDefault();
+if(bookingForm) {
+    bookingForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-  const date = selectedDateInput.value;
-  const name = nameInput.value.trim();
-  const service = serviceInput.value;
-  const location = locationInput.value;
+    const date = selectedDateInput.value;
+    const name = nameInput.value.trim();
+    const phone = document.getElementById("phone").value;
+    const service = serviceInput.value;
+    const location = locationInput.value;
+    const notes = document.getElementById("notes").value;
 
-  if (!name || service === "Select Service" || location === "Select Location") {
-    alert("Please complete all fields.");
-    return;
-  }
+    if (!name || !phone || service === "Select Service" || location === "Select Location") {
+        alert("Please complete all fields.");
+        return;
+    }
 
-  // Convert to ISO (Notion format)
-  const isoDate = new Date(date).toISOString().split("T")[0];
+    const submitBtn = bookingForm.querySelector(".submit-btn");
+    submitBtn.textContent = "Processing...";
+    submitBtn.disabled = true;
 
-  // Save in Notion
-  await addBookingToNotion(isoDate, name, service, location);
+    try {
+        // STEP 1: Send Email (Notification)
+        // Ensure you have configured emailjs in booking.html
+        if (typeof emailjs !== "undefined") {
+             await emailjs.send("service_6mvxrqw", "template_j5qlofp", {
+                date, name, phone, service, location ,notes
+            });
+        }
 
-  // Send email
-  await sendEmail(date, name, service, location);
+        // STEP 2: Fetch Current Database (To avoid deleting existing bookings)
+        const fetchRes = await fetch(API_URL + "/latest", {
+            method: "GET",
+            headers: { "X-Master-Key": MASTER_KEY }
+        });
+        
+        const jsonData = await fetchRes.json();
+        let currentRecord = jsonData.record;
 
-  alert("Booking submitted! Lebo will confirm shortly.");
+        // Safety check
+        if(!currentRecord.bookings) currentRecord.bookings = [];
 
-  bookingModal.style.display = "none";
-  bookingForm.reset();
+        // STEP 3: Add New Booking to List
+        currentRecord.bookings.push({
+            date: date,
+            name: name,
+            phone: phone,
+            service: service,
+            location: location,
+            notes: notes,
+            status: "Pending",  // AUTOMATIC status is pending
+            created_at: new Date().toISOString()
+        });
 
-  // Refresh calendar so approved days grey out automatically
-  const today = new Date();
-  generateCalendar(today.getFullYear(), today.getMonth());
-});
+        // STEP 4: Save Back to JSONBin
+        await fetch(API_URL, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "X-Master-Key": MASTER_KEY
+            },
+            body: JSON.stringify(currentRecord)
+        });
+
+        // DONE
+        alert("Booking Received! We have your details. Status: Pending Approval.");
+        bookingModal.style.display = "none";
+        bookingForm.reset();
+
+        // Optional: Refresh calendar immediately
+        // (Though pending dates don't show as blocked until you approve them)
+        const today = new Date();
+        generateCalendar(today.getFullYear(), today.getMonth());
+
+    } catch (error) {
+        console.error("Booking Error:", error);
+        alert("System error. Please message us on WhatsApp directly.");
+    } finally {
+        submitBtn.textContent = "Confirm Booking";
+        submitBtn.disabled = false;
+    }
+    });
+}
 
 /* =========================================================
    INIT CALENDAR
 ========================================================= */
-const today = new Date();
-generateCalendar(today.getFullYear(), today.getMonth());
+const initDate = new Date();
+generateCalendar(initDate.getFullYear(), initDate.getMonth());

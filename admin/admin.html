@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Dashboard</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <header>
+        <h1>Booking Manager</h1>
+        <button id="logoutBtn">Logout</button>
+    </header>
+    <main>
+
+        <!-- === NEW LOCATION PANEL === -->
+    <section class="panel" style="border-left: 5px solid #d4af37;">
+    <h3>📍 Current Location Status</h3>
+    <div style="display:flex; gap:10px;">
+        <input type="text" id="adminLocation" placeholder="e.g. Klerksdorp" style="width:70%;">
+        <button onclick="updateLocation()" style="background:#333; color:#fff; width:30%;">Update Site</button>
+    </div>
+    </section>
+        <!-- Add Manual Booking Section -->
+        <section class="panel">
+            <h3>Add Manual Booking</h3>
+            <form id="addForm">
+                <input type="date" id="newDate" required>
+                <input type="text" id="newName" placeholder="Client Name" required>
+                <select id="newService">
+                    <option>Classic Set</option>
+                    <option>Hybrid Set</option>
+                    <option>Volume Set</option>
+                    <option>Fluffy Set</option>
+                </select>
+                <button type="submit">Add Booking</button>
+            </form>
+        </section>
+
+        <!-- Booking List -->
+        <section class="panel">
+            <h3>Current Schedule</h3>
+            <p id="loading">Loading...</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </section>
+    </main>
+    <script src="admin.js"></script>
+</body>
+</html>

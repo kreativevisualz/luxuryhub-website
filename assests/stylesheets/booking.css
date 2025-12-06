@@ -94,6 +94,13 @@ header .tagline {
   box-shadow: var(--shadow);
 }
 
+/* Update inputs to be visible against white background of modal */
+#bookingForm input, #bookingForm select, #bookingForm textarea {
+    border: 1px solid var(--pink);
+    color: var(--black); /* Fixes white text on white input */
+    background-color: var(--white);
+}
+
 .calendar-header {
   display: flex;
   justify-content: space-between;
