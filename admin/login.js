@@ -3,7 +3,7 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
     const user = document.getElementById('username').value;
     const pass = document.getElementById('password').value;
 
-    if(user === "lebo" && pass === "luxury123") {
+    if(user === "WendeMoloi" && pass === "admin@luxuryhub2026") {
         sessionStorage.setItem("lhl_admin", "true");
         window.location.href = "admin.html";
     } else {
